@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-
+import './App.css';
 import Titles from './components/Titles';
 import Form from './components/Form';
 import Weather from './components/Weather';
 
 const API_KEY = '37e85e64bb7a988dd54ed9a3d7908b87'
+
 class App extends Component {
   state = {
     temperature: undefined,
@@ -22,7 +23,7 @@ class App extends Component {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
 
     if (city && country) {
@@ -31,7 +32,7 @@ class App extends Component {
         temperature: data.main.temp,
         city: data.name,
         country: data.sys.country,
-        humidity: data.main.humidity,
+        humidity: data.main.humidity + '%',
         description: data.weather[0].description,
         error: ''
       })
@@ -49,14 +50,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="weather-container">
         <Titles />
         <Form getWeather={this.getWeather} />
         <Weather
           temperature={this.state.temperature}
           city={this.state.city}
           country={this.state.country}
-          humidity={this.state.humidity}
+          humidity={this.state.humidity} 
           description={this.state.description}
           error={this.state.error}
         />
