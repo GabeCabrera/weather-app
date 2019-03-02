@@ -29,7 +29,7 @@ class App extends Component {
     if (city && country) {
       console.log(data);
       this.setState({
-        temperature: data.main.temp,
+        temperature: data.main.temp + "°",
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity + '%',
