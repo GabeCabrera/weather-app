@@ -22,7 +22,7 @@ class App extends Component {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
 
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
+    const api_call = await fetch(`https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
 
     if (city && country) {
@@ -50,7 +50,6 @@ class App extends Component {
     
     return (
       <div className="weather-container">
-      <link rel="shortcut icon" href="http://www.iconarchive.com/download/i79720/martz90/hex/weather-2.ico" type="image/x-icon" />
         <Titles />
         <Form getWeather={this.getWeather} />
         <Weather
