@@ -5,7 +5,6 @@ import Form from './components/Form';
 import Weather from './components/Weather';
 
 const API_KEY = '37e85e64bb7a988dd54ed9a3d7908b87'
-
 class App extends Component {
   state = {
     temperature: undefined,
@@ -27,9 +26,8 @@ class App extends Component {
     const data = await api_call.json();
 
     if (city && country) {
-      console.log(data);
       this.setState({
-        temperature: data.main.temp + "°",
+        temperature: Math.round(data.main.temp) + "°",
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity + '%',
@@ -49,6 +47,7 @@ class App extends Component {
   }
 
   render() {
+    
     return (
       <div className="weather-container">
         <Titles />
