@@ -50,6 +50,7 @@ class App extends Component {
     
     return (
       <div className="weather-container">
+      <link rel="shortcut icon" href="http://www.iconarchive.com/download/i79720/martz90/hex/weather-2.ico" type="image/x-icon" />
         <Titles />
         <Form getWeather={this.getWeather} />
         <Weather
